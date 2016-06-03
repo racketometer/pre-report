@@ -1,0 +1,87 @@
+%%%% PACKAGES %%%%
+
+% ¤¤ Translation and encoding ¤¤ %
+\usepackage[utf8]{inputenc}					% Input encoding
+\usepackage[english]{babel}					% Document language
+\usepackage[T1]{fontenc}						% Output encoding
+\usepackage{ragged2e,anyfontsize}			% Element alignment
+\usepackage{fixltx2e}						% Fix bugs in LaTex				
+															
+% ¤¤ Figures and tables (floats) ¤¤ %
+\usepackage{graphicx} 						% External graphix (JPG, PNG, EPS, PDF)
+\usepackage{wrapfig}							% Wrap figures with text \begin{wrapfigure}{Placering}{Stoerrelse}
+\usepackage{multirow}                		% Merge cells in tables (\multicolumn og \multirow)
+\usepackage{multicol}         	        		% Columnt output
+\usepackage{rotating}						% Rateted text \begin{sideways}...\end{sideways}
+\usepackage{colortbl} 						% Table colors \columncolor \rowcolor
+\usepackage{xcolor}				% Colors
+\usepackage{flafter}							% Place floats after refenrece
+\let\newfloat\relax 							% Fix bug between float and memoir
+\usepackage{float}							% Fixed placement of elements \begin{figure}[H]
+\usepackage{longtable}						% Multi page tables
+\usepackage[section]{placeins}
+
+
+% ¤¤ Mathematics and science ¤¤
+\usepackage{amssymb,stmaryrd} 				% Advanced maths
+\usepackage{mathtools}						% Math and symbols extension
+\usepackage{textcomp}                 		% Symbols (e.g. per mille with \textperthousand )
+\usepackage{siunitx}							% SI units \si{unit} and \SI{value}{unit}
+\sisetup{output-decimal-marker = {,}}		% SI units decimal point
+
+% ¤¤ References ¤¤ %
+\usepackage[english]{varioref}				% Cross references with page numbers (\vref)
+\usepackage[round]{natbib}					% Scientific citation models
+\usepackage{footnote}						% Footnotes \footnote{This is a footnote}
+
+% ¤¤ Misc. ¤¤ %
+\usepackage{listings}						% Source code \begin{lstlisting}...\end{lstlisting}
+\usepackage{lipsum}							% Dummy text \lipsum[..]
+\usepackage[shortlabels]{enumitem}			% Single list configuration
+\usepackage{pdfpages}						% Include PDF documents \includepdf[pages={x-y}]{file.pdf}	
+\pdfoptionpdfminorversion=6					% PDF versions 1.6 and above
+\pretolerance=2500 							% Space between words (High value: less word splits and more space)
+\usepackage{afterpage}						% Blank pages
+\usepackage[colorlinks]{hyperref}			% Clickable links
+
+% Notes and comments. Switch draft to final to create errors on build if notes remain
+\usepackage[footnote,draft,silent,english,nomargin]{fixme}
+
+%%%% Word split %%%%
+\hyphenation{}			% Add words to split. See details here http://goo.gl/RYxuQr
+
+% ¤¤ Literature index ¤¤ %
+\bibpunct[, ]{[}{]}{;}{a}{,}{,} 				% Define parameters for Harvard notation
+\bibliographystyle{plainnat}					% Style of literature index
+
+% Tabluarx colummn fill width R and L justification
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\setlength\hsize{1\hsize}\centering}X}
+
+%%%% CUSTOM COMMANDS %%%%
+
+% ¤¤ Add graphics ¤¤ %
+% Parameters
+%  #1: Width ratio of full page
+%  #2: Relative path from graphics folder
+%  #3: Caption
+%  #4: Label
+%
+% \graphic{1}{1.jpg}{Picture of something}{pic1}
+
+\newcommand{\graphic}[4]{
+	\begin{figure} \centering
+		\includegraphics[width=#1\textwidth]{graphics/#2}
+		\caption{#3}\label{#4}
+	\end{figure} 
+}
+
+% ¤¤ Signature line ¤¤ %
+% Include comment parts to show dates on line
+\newcommand*{\signature}[2]{%
+    \par\noindent\makebox[8cm]{\hrulefill} %\hfill\makebox[2.0in]{\hrulefill}
+	\vspace{-2mm}    
+    \par\noindent\makebox[8cm][l]{#1\hfill#2}      %\hfill\makebox[2.0in][l]{#2}
+    \vspace*{5mm}
+}

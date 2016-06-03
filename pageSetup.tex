@@ -1,0 +1,96 @@
+% Page setup
+
+% ¤¤ Margins ¤¤ %
+\setlrmarginsandblock{3.5cm}{2.5cm}{*}		%{Binding}{Border}{Ratio}
+\setulmarginsandblock{2.5cm}{3.0cm}{*}		%{Top}{Bottom}{Ratio}
+\checkandfixthelayout
+
+% ¤¤ Sections ¤¤ %
+\setlength{\parindent}{0mm}           		% Size of indents
+\setlength{\parskip}{3mm}          			% Space on double line breaks
+\linespread{1,1}								% Line spaceing
+
+% ¤¤ Table of content ¤¤ %
+\setsecnumdepth{subsection}		 				% Depth for headlines with numbers (part/chapter/section/subsection)
+\maxsecnumdepth{subsection}					% Limit  of depth on document
+\settocdepth{section} 						% TOC depth
+
+% ¤¤ Lists ¤¤ %
+\setlist{
+  topsep=2mm,								% Vertical padding between text and list
+  itemsep=-0.5mm,								% Vertical padding between items
+  leftmargin=6mm,							% Horizontal margin to bullets
+} 
+
+% ¤¤ Visual links ¤¤ %
+\hypersetup{colorlinks = true,				% Set colors
+    linkcolor = black,
+    citecolor = black,
+    urlcolor = black
+}
+
+% ¤¤ Figures and tables ¤¤ %
+\captionnamefont{\small\bfseries\itshape}
+\captiontitlefont{\small}
+\captiondelim{. }							% Seperator on identifier and caption
+\hangcaption									% Align left on multiline captions
+\captionwidth{\linewidth}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\cftbeforechapterskip}{0pt}
+
+% ¤¤ Chapter layout ¤¤ %
+\definecolor{numbercolor}{gray}{0.75}
+\newif\ifchapternonum
+
+\makechapterstyle{bs}{
+  \renewcommand\beforechapskip{0pt}
+  \renewcommand{\afterchapskip}{8mm}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{30}\selectfont}
+  
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{25}{0}\selectfont\color{numbercolor}}
+  
+  \renewcommand\printchaptertitle[1]{
+    \noindent
+    \begin{tabularx}{\textwidth}{@{\hskip0pt} X @{\hskip0pt}}
+    		{\parbox[b]{\textwidth}{\chaptitlefont ##1}\raggedright} \\ \hrule
+    		
+		\ifchapternonum
+			\relax
+		\else
+			\raisebox{-20pt}{\chapnumfont \thechapter}\raggedleft
+		\fi
+    \end{tabularx}
+  }
+}
+
+\chapterstyle{bs}						% Chapter theme - Google 'memoir chapter styles' for alternatives
+
+% ¤¤ Header and footer ¤¤ %
+\makepagestyle{ASE}
+\makepsmarks{ASE}{%
+	\createmark{chapter}{left}{shownumber}{}{. \ }
+	\createmark{section}{right}{shownumber}{}{. \ }
+	\createplainmark{toc}{both}{\contentsname}
+	\createplainmark{lof}{both}{\listfigurename}
+	\createplainmark{lot}{both}{\listtablename}
+	\createplainmark{bib}{both}{\bibname}
+	\createplainmark{index}{both}{\indexname}
+	\createplainmark{glossary}{both}{\glossaryname}
+}
+\nouppercaseheads
+
+\makeoddhead{ASE}{ITONK-01 Group 3}{}{ASE - Aarhus University}
+\makeevenhead{ASE}{ITONK-01 Group 3}{}{ASE - Aarhus University}
+\makeevenfoot{ASE}{}{}{\thepage}
+\makeoddfoot{ASE}{}{}{\thepage}
+\makeheadrule{ASE}{\textwidth}{0.5pt}					% Line below header
+\makefootrule{ASE}{\textwidth}{0.5pt}{1mm}				% Line above footer
+
+\aliaspagestyle{chapter}{ASE}
+															
+\pagestyle{ASE}
