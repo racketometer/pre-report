@@ -45,26 +45,28 @@
 
 \makechapterstyle{bs}{
   \renewcommand\beforechapskip{0pt}
-  \renewcommand{\afterchapskip}{8mm}
+  \renewcommand{\afterchapskip}{7mm}
   \renewcommand\printchaptername{}
   \renewcommand\printchapternum{}
   \renewcommand\printchapternonum{\chapternonumtrue}
   
   \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{30}\selectfont}
   
-  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{25}{0}\selectfont\color{numbercolor}}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{35}{0}\selectfont\color{numbercolor}}
   
   \renewcommand\printchaptertitle[1]{
     \noindent
-    \begin{tabularx}{\textwidth}{@{\hskip0pt} X @{\hskip0pt}}
-    		{\parbox[b]{\textwidth}{\chaptitlefont ##1}\raggedright} \\ \hrule
-    		
-		\ifchapternonum
-			\relax
-		\else
-			\raisebox{-20pt}{\chapnumfont \thechapter}\raggedleft
-		\fi
-    \end{tabularx}
+    
+	\ifchapternonum
+	    \begin{tabularx}{\textwidth}{@{\hskip0pt} X @{\hskip0pt}}
+	    		{\parbox[b]{\textwidth}{\chaptitlefont ##1}\raggedright} \\
+	    \end{tabularx}
+    \else
+	    \begin{tabularx}{\textwidth}{@{\hskip0pt}  X r @{\hskip0pt} }
+    			{\parbox[b]{\textwidth}{\chaptitlefont ##1}\raggedright} & {\chapnumfont \thechapter} \\
+    		\end{tabularx}
+	\fi
+	\hrule
   }
 }
 
@@ -84,8 +86,8 @@
 }
 \nouppercaseheads
 
-\makeoddhead{ASE}{ITONK-01 Group 3}{}{ASE - Aarhus University}
-\makeevenhead{ASE}{ITONK-01 Group 3}{}{ASE - Aarhus University}
+\makeoddhead{ASE}{I6BAC-01 Project nr. 16148}{}{ASE - Aarhus University}
+\makeevenhead{ASE}{I6BAC-01 Project nr. 16148}{}{ASE - Aarhus University}
 \makeevenfoot{ASE}{}{}{\thepage}
 \makeoddfoot{ASE}{}{}{\thepage}
 \makeheadrule{ASE}{\textwidth}{0.5pt}					% Line below header
