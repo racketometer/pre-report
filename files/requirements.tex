@@ -1,31 +1,39 @@
 \chapter{Requirements}
+This chapter lists the initial requirements identified for the project i.e. a tentative list. The following user stories are used to identify the functional requirements.
+
+\userstory{As a consultant, I want to present recorded data on an athletes performance in a nice fashion that makes the athlete understand and become interested in the product.}
+\userstory{As a consultant, I want to be able to get recorded data anywhere as long as I am connected to the internet.}
+\userstory{As a consultant, I want to organize my recorded performances for users in their corresponding clubs.}
 
 \section*{Functional requirements}
+The requirements are split into two sections. One regarding the application the consultant will be using. The other one is the backend requirements to enable the application's goals.
 
 \subsection*{Application}
-
-An application to present key features.
-
-A consultant should be able to upload sensor data to the server on behalf of a user.
-
-A consultant should be able to find data records on the server for users.
-
-A consultant should be able to create a club.
+The application must
+\begin{itemize}
+	\item present the available key features of a performance in a clear and understandable way for both the consultant and the athlete.
+	\item enable the consultant to input data from a performance sensor into the application and implicitly push this data to an externalized location.
+	\item let the consultant manage what athlete did the current performance.
+	\item enable the consultant to find athletes' old performances stored on an externalized location.
+	\item enable to consultant to organize athletes in clubs to ease future lookup.
+\end{itemize}
 
 \subsection*{Server}
-
-The server should make data entry available on a Web API.
-
-The server should make key features available on the Web API.
-
-The server should calculate key features of the sensor data.
-
-The server should be able to process data asynchronous and report back to clients when done.
+The backend must
+\begin{itemize}
+	\item enable clients to post new performance measurements on to the stores.
+	\item enable clients to post metadata on athletes and clubs on to the stores.
+	\item provide key features of performances available to clients.
+	\item be able to calculate key features from the performance sensor.
+	\item calculate features asynchronously and notify clients processing is done and data is available.
+\end{itemize}
 
 \section*{Non-functional requirements}
+The following non-functional requirements are specified for the project.
 
-The application should be cross-platform.
+\begin{itemize}
+	\item The project should mainly use Open Source Software.
+	\item The application should run on multiple platforms.
+\end{itemize}
 
-The project should use open-source software where ever applicable.
-
-
+The last item may be subject to change if the user analysis proves it to be redundant.
