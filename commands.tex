@@ -1,0 +1,41 @@
+% Tabluarx colummn fill width R and L justification
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\setlength\hsize{1\hsize}\centering}X}
+
+% ¤¤ Add graphics ¤¤ %
+% Parameters
+%  #1: Width ratio of full page
+%  #2: Relative path from graphics folder
+%  #3: Caption
+%  #4: Label
+%
+% \graphic{1}{1.jpg}{Picture of something}{pic1}
+
+\newcommand{\graphic}[4]{
+	\begin{figure} \centering
+		\includegraphics[width=#1\textwidth]{graphics/#2}
+		\caption{#3}\label{#4}
+	\end{figure} 
+}
+
+% ¤¤ Signature line ¤¤ %
+% Include comment parts to show dates on line
+\newcommand*{\signature}[2]{%
+    \par\noindent\makebox[8cm]{\hrulefill} %\hfill\makebox[2.0in]{\hrulefill}
+	\vspace{-2mm}    
+    \par\noindent\makebox[8cm][l]{#1\hfill#2}      %\hfill\makebox[2.0in][l]{#2}
+    \vspace*{5mm}
+}
+
+% ¤¤ User stories ¤¤ %
+\definecolor{usercolor}{gray}{0.9}
+\newcommand{\userstory}[1]{
+	\begin{tabularx}{\textwidth}{X}
+		\par\noindent\textcolor{usercolor}{\hrule}
+		\vspace{3mm}
+		#1 
+		\vspace{-2mm}
+		\par\noindent\textcolor{usercolor}{\hrule}
+	\end{tabularx}
+}
